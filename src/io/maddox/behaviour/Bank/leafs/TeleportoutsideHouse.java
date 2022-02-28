@@ -3,9 +3,7 @@ package io.maddox.behaviour.Bank.leafs;
 import io.maddox.data.Areas;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Magic;
-import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.*;
 
 public class TeleportoutsideHouse extends Leaf {
     @Override
@@ -15,7 +13,9 @@ public class TeleportoutsideHouse extends Leaf {
 
     @Override
     public int onLoop() {
-        if (Magic.Spell.TELEPORT_TO_HOUSE.cast()) {
+        if (Game.tab(Game.Tab.INVENTORY)) {
+            Item housetablet = Inventory.stream().name("Teleport to house").first();
+            housetablet.interact("Outside");
             Condition.wait(() -> Areas.OUTSIDE_HOUSE.contains(Players.local()), 1000, 5);
         }
         return 0;

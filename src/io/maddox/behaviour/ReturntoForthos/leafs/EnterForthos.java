@@ -19,9 +19,9 @@ public class EnterForthos  extends Leaf {
             Movement.walkTo(Areas.FORTHOS_ENTRANCE.getRandomTile());
             Condition.wait(() -> Areas.FORTHOS_ENTRANCE.contains(Players.local()), 250, 10);
         }
-        if (forthosentrance.interact("Climb-down")) {
+        if (!forthosentrance.interact("Climb-down") || Condition.wait(() -> Areas.FORTHOS_DUNGEON.contains(Players.local()), 250, 10)) {
             System.out.println("Can't locate Forthos Entrance, Restarting Leaf...");
-            Condition.wait(() -> Areas.FORTHOS_DUNGEON.contains(Players.local()), 250, 10);
+            return 0;
         }
         return 0;
     }
