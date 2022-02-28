@@ -33,6 +33,9 @@ public class Configs {
     public static boolean checkifActive(){
         return Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC);
     }
+    public static boolean checkifDeactive(){
+        return !Prayer.prayerActive(Prayer.Effect.PROTECT_FROM_MAGIC);
+    }
     public static boolean activatePrayer(){
         return Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, true);
     }

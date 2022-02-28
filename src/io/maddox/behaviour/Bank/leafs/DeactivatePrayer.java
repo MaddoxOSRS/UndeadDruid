@@ -1,22 +1,22 @@
-package io.maddox.behaviour.Combat.leafs;
+package io.maddox.behaviour.Bank.leafs;
 
 import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Game;
 
-public class ActivatePrayer extends Leaf {
+public class DeactivatePrayer extends Leaf {
     @Override
     public boolean isValid() {
-        return !Configs.checkifActive();
+        return Configs.checkifActive();
     }
 
     @Override
     public int onLoop() {
-        if (Configs.activatePrayer()) {
-            System.out.println("Activating Prayers");
+        if (!Configs.activatePrayer()) {
+            System.out.println("Deactivating Prayers");
             Game.closeOpenTab();
-            Condition.wait(Configs::checkifActive, 300, 5);
+            Condition.wait(Configs::checkifDeactive, 300, 5);
         }
         return 0;
     }

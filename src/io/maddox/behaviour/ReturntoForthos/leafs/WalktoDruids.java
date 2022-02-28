@@ -1,7 +1,6 @@
 package io.maddox.behaviour.ReturntoForthos.leafs;
 
 import io.maddox.data.Areas;
-import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Inventory;

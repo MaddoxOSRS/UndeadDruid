@@ -1,17 +1,15 @@
 package io.maddox.behaviour.Combat.leafs;
 
-import io.maddox.data.Areas;
 import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Players;
 
 public class LootItems extends Leaf {
     @Override
     public boolean isValid() {
-        return !Inventory.isFull() && Configs.getLoot() && Areas.DRUID_ATTACK_AREA.contains(Players.local());
+        return !Inventory.isFull() && Configs.getLoot();
     }
 
     @Override

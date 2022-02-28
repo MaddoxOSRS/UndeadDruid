@@ -5,13 +5,16 @@ import io.maddox.data.Areas;
 import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.*;
+import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Objects;
+import org.powbot.api.rt4.Prayer;
 import org.powbot.api.rt4.walking.model.Skill;
 
 public class RestorePrayer extends Leaf {
     @Override
     public boolean isValid() {
-        return Configs.restorePray() && Areas.DRUID_ATTACK_AREA.contains(Players.local());
+        return Configs.restorePray();
     }
 
     @Override

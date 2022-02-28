@@ -7,10 +7,10 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 
-public class InterferewithBank extends Leaf {
+public class InteractwithBank extends Leaf {
     @Override
     public boolean isValid() {
-        return Areas.HOSIDIUS_BANK.contains(Players.local()) && Inventory.isFull();
+        return Areas.HOSIDIUS_BANK.contains(Players.local());
     }
 
     @Override
@@ -20,13 +20,15 @@ public class InterferewithBank extends Leaf {
             Bank.open();
             Condition.wait(() -> Bank.opened(), 350, 5);
         }
-        if (Inventory.isNotEmpty() && Bank.opened()) {
-            Bank.depositInventory();
-            Condition.wait(Inventory::isEmpty, 500, 5);
-        }
-        if (Inventory.isEmpty() && Bank.opened()) {
-            Bank.withdraw(8013, 2);
-            Condition.wait(Inventory::isNotEmpty, 500, 5);
+        if (Bank.opened()) {
+            if (Inventory.isNotEmpty()) {
+                Bank.depositInventory();
+                Condition.wait(Inventory::isEmpty, 500, 5);
+            }
+            if (Inventory.stream().name("Teleport to house").isEmpty()) {
+                Bank.withdraw(8013, 1);
+                Condition.wait(Inventory::isNotEmpty, 500, 5);
+            }
         }
         return 0;
     }
