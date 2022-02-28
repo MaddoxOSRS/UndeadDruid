@@ -25,7 +25,7 @@ public class InterferewithBank extends Leaf {
             Condition.wait(Inventory::isEmpty, 500, 5);
         }
         if (Inventory.isEmpty() && Bank.opened()) {
-            Bank.withdraw(8013, 1);
+            Bank.withdraw(8013, 2);
             Condition.wait(Inventory::isNotEmpty, 500, 5);
         }
         return 0;

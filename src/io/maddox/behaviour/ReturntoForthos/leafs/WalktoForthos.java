@@ -10,13 +10,13 @@ import org.powbot.api.rt4.Players;
 public class WalktoForthos extends Leaf {
     @Override
     public boolean isValid() {
-        return !Inventory.isFull();
+        return !Inventory.isFull() && !Areas.FORTHOS_DUNGEON.contains(Players.local()) && !Areas.FORTHOS_ENTRANCE.contains(Players.local());
     }
 
     @Override
     public int onLoop() {
         Movement.walkTo(Areas.FORTHOS_ENTRANCE.getRandomTile());
-        Condition.wait(() -> Players.local().inMotion(), 250, 5);
+        Condition.wait(() -> Areas.FORTHOS_ENTRANCE.contains(Players.local()), 250, 10);
         return 0;
     }
 }

@@ -10,6 +10,7 @@ import io.maddox.behaviour.Combat.leafs.*;
 import io.maddox.behaviour.ReturntoForthos.ForthosBranch;
 import io.maddox.behaviour.ReturntoForthos.leafs.EnterForthos;
 import io.maddox.behaviour.ReturntoForthos.leafs.WalktoDruids;
+import io.maddox.behaviour.ReturntoForthos.leafs.WalktoForthos;
 import io.maddox.behaviour.fallback.FallbackLeaf;
 import io.maddox.behaviour.firstrun.FirsRunBranch;
 import io.maddox.behaviour.firstrun.Leaves.StartLeaf;
@@ -83,7 +84,7 @@ public class Main extends AbstractScript {
                 new FirsRunBranch().addLeafs(new StartLeaf()),
                 new CombatBranch().addLeafs(new RestorePrayer(), new AttackDruid(), new ActivatePrayer(), new Idle(), new LootItems(), new AvoidMelee()),
                 new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InterferewithBank()),
-                new ForthosBranch().addLeafs(new EnterForthos(), new WalktoDruids()),
+                new ForthosBranch().addLeafs(new EnterForthos(), new WalktoDruids(), new WalktoForthos()),
                 new FallbackLeaf());
     }
 
