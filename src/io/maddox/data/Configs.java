@@ -42,7 +42,7 @@ public class Configs {
     }
     public static final Tile DRUID_TILE = new Tile(1802, 9942, 0);
     public static Npc nearestDruid() {
-        return Npcs.stream().within(Areas.DRUID_ATTACK_AREA).id(Configs.DRUIDS).filtered(n -> !n.interacting().valid() || n.interacting().equals(Players.local())).nearest(Players.local()).first();
+        return Npcs.stream().within(Areas.DRUID_ATTACK_AREA).id(Configs.DRUIDS).filtered(n -> !n.interacting().valid() || n.interacting().equals(Players.local())).nearest().first();
     }
     public static boolean beingHit() {
         return Players.local().healthBarVisible();
