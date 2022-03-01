@@ -44,6 +44,9 @@ public class Configs {
     public static boolean hasAmmo() {
         return Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("bolt") || Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("arrow");
     }
+    public static boolean outofTabs() {
+        return Bank.stream().id(8013).isEmpty();
+    }
     public static boolean avoidMelee() {
         return Npcs.stream().within(1).name(Configs.DRUIDS_STRING).interactingWithMe().isNotEmpty();
     }
