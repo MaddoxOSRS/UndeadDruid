@@ -21,10 +21,9 @@ public class RestorePrayer extends Leaf {
         if (!altaridChange.valid() || !altaridChange.inViewport()) {
             System.out.println("Altar is not found or on-screen, walking to it's location...");
             Camera.turnTo(altaridChange);
-            Movement.walkTo(Configs.ALTAR_TILE);
             Condition.wait(altaridChange::inViewport, 500, 5);
         }
-        if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 1250, 5)) {
+        if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 1250, 10)) {
             Notifications.showNotification("Couldn't Restore Prayer");
             return 0;
         }

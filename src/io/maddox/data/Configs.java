@@ -21,10 +21,7 @@ public class Configs {
 
     //Prayer restoration
     public static final Tile ALTAR_TILE = new Tile(1801, 9951, 0);
-    public static final int ALTAR = 34837;
     public static final int[] ALTARS = {34837, 34900};
-    public static final String ALTARSTRING = "Altar";
-    public static final int ALTARidChange = 34900;
     public static int RuneArrowID = 892;
     public static final int FORTHOSENTRANCE = 34865;
     public static boolean restorePray() {
