@@ -77,7 +77,7 @@ public class Main extends AbstractScript {
         tree.addBranches(
                 new TimeoutLeaf(),
                 new CombatBranch().addLeafs(new RestorePrayer(), new AttackDruid(), new ActivatePrayer(), new Idle(), new LootItems(), new AvoidMelee()),
-                new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InteractwithBank(), new DeactivatePrayer(), new NoAmmoShutdown()),
+                new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InteractwithBank()),
                 new ForthosBranch().addLeafs(new EnterForthos(), new WalktoDruids(), new WalktoForthos()),
                 new TimeoutLeaf(),
                 new FallbackLeaf());

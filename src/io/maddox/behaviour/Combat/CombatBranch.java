@@ -9,6 +9,6 @@ import org.powbot.api.rt4.Players;
 public class CombatBranch extends Branch {
     @Override
     public boolean isValid() {
-        return Areas.DRUID_ATTACK_AREA.contains(Players.local()) && !Inventory.isFull() && Configs.hasAmmo();
+        return Areas.DRUID_ATTACK_AREA.contains(Players.local()) && !Inventory.isFull();
     }
 }

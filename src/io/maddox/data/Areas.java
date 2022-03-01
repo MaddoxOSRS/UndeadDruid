@@ -12,5 +12,5 @@ public class Areas {
     public static final Area ALTAR_ROOM = new Area(new Tile(1803, 9948, 0),new Tile(1795, 9953, 0));
     public static final Area DRUID_ATTACK_AREA = new Area(new Tile(1795, 9957, 0),new Tile(1806, 9934, 0));
     public static final Area HOSIDIUS_BANK = new Area(new Tile(1745, 3601, 0),new Tile(1752, 3594, 0));
-    public static final Area OUTSIDE_HOUSE = new Area(new Tile(1753, 3603, 0),new Tile(1735, 3506, 0));
+    public static final Area OUTSIDE_HOUSE = new Area(new Tile(1737, 3605, 0),new Tile(1763, 3509, 0)); //1737, 3605, 1763, 3509
 }

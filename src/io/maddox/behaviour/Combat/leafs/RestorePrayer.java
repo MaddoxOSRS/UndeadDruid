@@ -24,7 +24,7 @@ public class RestorePrayer extends Leaf {
             Movement.walkTo(Configs.ALTAR_TILE);
             Condition.wait(altaridChange::inViewport, 500, 5);
         }
-        if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 700, 5)) {
+        if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 1250, 5)) {
             Notifications.showNotification("Couldn't Restore Prayer");
             return 0;
         }

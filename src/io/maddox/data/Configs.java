@@ -25,6 +25,7 @@ public class Configs {
     public static final int[] ALTARS = {34837, 34900};
     public static final String ALTARSTRING = "Altar";
     public static final int ALTARidChange = 34900;
+    public static int RuneArrowID = 892;
     public static final int FORTHOSENTRANCE = 34865;
     public static boolean restorePray() {
         return Prayer.prayerPoints() < Random.nextInt(15, 35) || Prayer.prayerPoints() == 0;
@@ -40,9 +41,12 @@ public class Configs {
     public static boolean activatePrayer(){
         return Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, true);
     }
+    public static boolean deactivatePrayer(){
+        return Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, false);
+    }
     //Combat
     public static boolean hasAmmo() {
-        return Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("bolt") || Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("arrow");
+        return Equipment.itemAt(Equipment.Slot.QUIVER).id() != RuneArrowID;
     }
     public static boolean outofTabs() {
         return Bank.stream().id(8013).isEmpty();
