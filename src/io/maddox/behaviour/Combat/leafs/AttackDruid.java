@@ -3,6 +3,7 @@ package io.maddox.behaviour.Combat.leafs;
 import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
@@ -17,6 +18,7 @@ public class AttackDruid extends Leaf {
     public int onLoop() {
         Npc undeadDruid = Configs.nearestDruid();
         if (!undeadDruid.valid() || !undeadDruid.inViewport()) {
+            Camera.turnTo(undeadDruid);
             Movement.walkTo(Configs.DRUID_TILE);
             System.out.println("Druid not in viewport.");
             return 0;

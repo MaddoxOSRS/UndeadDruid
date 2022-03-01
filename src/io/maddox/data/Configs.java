@@ -41,6 +41,9 @@ public class Configs {
         return Prayer.prayer(Prayer.Effect.PROTECT_FROM_MAGIC, true);
     }
     //Combat
+    public static boolean hasAmmo() {
+        return Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("bolt") || Equipment.itemAt(Equipment.Slot.QUIVER).name().contains("arrow");
+    }
     public static boolean avoidMelee() {
         return Npcs.stream().within(1).name(Configs.DRUIDS_STRING).interactingWithMe().isNotEmpty();
     }

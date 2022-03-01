@@ -5,10 +5,8 @@ import io.maddox.data.Areas;
 import io.maddox.data.Configs;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Objects;
-import org.powbot.api.rt4.Prayer;
+import org.powbot.api.Notifications;
+import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
 public class RestorePrayer extends Leaf {
@@ -22,11 +20,12 @@ public class RestorePrayer extends Leaf {
         GameObject altaridChange = Objects.stream().within(Areas.ALTAR_ROOM).id(Configs.ALTARS).firstOrNull();
         if (!altaridChange.valid() || !altaridChange.inViewport()) {
             System.out.println("Altar is not found or on-screen, walking to it's location...");
+            Camera.turnTo(altaridChange);
             Movement.walkTo(Configs.ALTAR_TILE);
             Condition.wait(altaridChange::inViewport, 500, 5);
         }
         if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 700, 5)) {
-            System.out.println("Failed to interact with Altar, Retrying...");
+            Notifications.showNotification("Couldn't Restore Prayer");
             return 0;
         }
         return 0;

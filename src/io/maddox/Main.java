@@ -2,10 +2,7 @@ package io.maddox;
 
 import com.google.common.eventbus.Subscribe;
 import io.maddox.behaviour.Bank.BankBranch;
-import io.maddox.behaviour.Bank.leafs.DeactivatePrayer;
-import io.maddox.behaviour.Bank.leafs.InteractwithBank;
-import io.maddox.behaviour.Bank.leafs.TeleportoutsideHouse;
-import io.maddox.behaviour.Bank.leafs.WalktoBank;
+import io.maddox.behaviour.Bank.leafs.*;
 import io.maddox.behaviour.Combat.CombatBranch;
 import io.maddox.behaviour.Combat.leafs.*;
 import io.maddox.behaviour.ReturntoForthos.ForthosBranch;
@@ -80,7 +77,7 @@ public class Main extends AbstractScript {
         tree.addBranches(
                 new TimeoutLeaf(),
                 new CombatBranch().addLeafs(new RestorePrayer(), new AttackDruid(), new ActivatePrayer(), new Idle(), new LootItems(), new AvoidMelee()),
-                new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InteractwithBank(), new DeactivatePrayer()),
+                new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InteractwithBank(), new DeactivatePrayer(), new NoAmmoShutdown()),
                 new ForthosBranch().addLeafs(new EnterForthos(), new WalktoDruids(), new WalktoForthos()),
                 new TimeoutLeaf(),
                 new FallbackLeaf());
