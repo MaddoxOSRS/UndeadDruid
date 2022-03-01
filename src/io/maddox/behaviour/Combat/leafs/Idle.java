@@ -9,16 +9,16 @@ import org.powbot.api.rt4.Players;
 public class Idle extends Leaf {
     @Override
     public boolean isValid() {
-        return Configs.beingHit() && !Configs.avoidMelee();
+        return Configs.beingHit();
     }
 
     @Override
     public int onLoop() {
         if (Configs.interactingwithDruid()) {
             Main.lastActivityTime = System.currentTimeMillis();
-            if (Players.local().interacting().healthPercent() <= 10) {
+            if (Configs.nearDead()) {
                 System.out.println("Waiting to not be in combat");
-                Condition.wait(() -> Configs.closestItems().valid(), 1500, 5);
+                Condition.wait(() -> Configs.closestItems().valid(), 500, 5);
             }
         }
         return 0;

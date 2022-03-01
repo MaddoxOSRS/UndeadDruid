@@ -22,9 +22,9 @@ public class AttackDruid extends Leaf {
             return 0;
         }
         if(!Players.local().interacting().valid()) {
-            if (undeadDruid.interact("Attack")) {
-                System.out.println("Attacking Druid...");
-                Condition.wait(Configs::interactingwithDruid, 1000, 10);
+            if (!undeadDruid.interact("Attack") || !Condition.wait(Configs::interactingwithDruid, 1000, 10)) {
+                System.out.println("Failed to attack druid, Retrying...");
+                return 0;
             }
         }
 

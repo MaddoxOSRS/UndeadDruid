@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Players;
 public class WalktoDruids extends Leaf {
     @Override
     public boolean isValid() {
-        return !Inventory.isFull() && Areas.FORTHOS_DUNGEON.contains(Players.local()) && !Areas.DRUID_ATTACK_AREA.contains(Players.local());
+        return  Areas.FORTHOS_DUNGEON.contains(Players.local()) && !Areas.DRUID_ATTACK_AREA.contains(Players.local());
     }
 
     @Override

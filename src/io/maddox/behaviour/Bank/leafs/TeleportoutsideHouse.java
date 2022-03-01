@@ -22,8 +22,10 @@ public class TeleportoutsideHouse extends Leaf {
         }
         if (Game.tab(Game.Tab.INVENTORY)) {
             Item housetablet = Inventory.stream().name("Teleport to house").first();
-            housetablet.interact("Outside");
-            Condition.wait(() -> Areas.OUTSIDE_HOUSE.contains(Players.local()), 1000, 5);
+            if (!housetablet.interact("Outside") || !Condition.wait(() -> Areas.OUTSIDE_HOUSE.contains(Players.local()), 1000, 5)) {
+                System.out.println("Failed to teleport outside of house, Retrying");
+                return 0;
+            }
         }
         return 0;
     }

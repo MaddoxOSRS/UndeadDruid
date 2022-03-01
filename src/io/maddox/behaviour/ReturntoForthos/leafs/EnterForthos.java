@@ -12,15 +12,15 @@ import org.powbot.api.rt4.Players;
 public class EnterForthos  extends Leaf {
     @Override
     public boolean isValid() {
-        return !Inventory.isFull() && Areas.FORTHOS_ENTRANCE.contains(Players.local());
+        return Areas.FORTHOS_ENTRANCE.contains(Players.local());
     }
 
     @Override
     public int onLoop() {
         GameObject forthosentrance = Objects.stream().within(Areas.FORTHOS_ENTRANCE).id(Configs.FORTHOSENTRANCE).firstOrNull();
-        if (forthosentrance.interact("Climb-down")) {
-            System.out.println("Entering Forthos Dungeon...");
-            Condition.wait(() -> Areas.FORTHOS_DUNGEON.contains(Players.local()), 250, 10);
+        if (!forthosentrance.interact("Climb-down") || !Condition.wait(() -> Areas.FORTHOS_DUNGEON.contains(Players.local()), 250, 10)) {
+            System.out.println("Failed to enter Fortho Dungeon. Retrying...");
+            return 0;
         }
         return 0;
     }

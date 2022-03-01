@@ -13,8 +13,6 @@ import io.maddox.behaviour.ReturntoForthos.leafs.EnterForthos;
 import io.maddox.behaviour.ReturntoForthos.leafs.WalktoDruids;
 import io.maddox.behaviour.ReturntoForthos.leafs.WalktoForthos;
 import io.maddox.behaviour.fallback.FallbackLeaf;
-import io.maddox.behaviour.firstrun.FirsRunBranch;
-import io.maddox.behaviour.firstrun.Leaves.StartLeaf;
 import io.maddox.behaviour.timeout.TimeoutLeaf;
 import io.maddox.data.Areas;
 import io.maddox.data.Configs;
@@ -68,7 +66,6 @@ public class Main extends AbstractScript {
         int lootValue = getOption("Grab Items above GP Value:");
         Configs.setlootValue(lootValue);
         Paint p = new PaintBuilder()
-                .addString("Branch:" , () -> Configs.currentBranch )
                 .addString("Leaf:" , () -> Configs.currentLeaf )
                 .trackSkill(Skill.Ranged)
                 .trackInventoryItems(23499, 995, 560, 565, 557, 1393, 1395, 1397, 1399, 562, 561, 4698, 564, 207, 5295, 5300, 3138, 245, 1249, 2366, 1247, 217)
@@ -82,10 +79,10 @@ public class Main extends AbstractScript {
     private void instantiateTree() {
         tree.addBranches(
                 new TimeoutLeaf(),
-                new FirsRunBranch().addLeafs(new StartLeaf()),
                 new CombatBranch().addLeafs(new RestorePrayer(), new AttackDruid(), new ActivatePrayer(), new Idle(), new LootItems(), new AvoidMelee()),
                 new BankBranch().addLeafs(new TeleportoutsideHouse(), new WalktoBank(), new InteractwithBank(), new DeactivatePrayer()),
                 new ForthosBranch().addLeafs(new EnterForthos(), new WalktoDruids(), new WalktoForthos()),
+                new TimeoutLeaf(),
                 new FallbackLeaf());
     }
 
@@ -101,7 +98,7 @@ public class Main extends AbstractScript {
 
  @Subscribe
     public void onBreak(BreakEvent e) {
-        if(Areas.ALTAR_ROOM.contains(Players.local())) {
+        if(Areas.HOSIDIUS_BANK.contains(Players.local())) {
             e.delay(10000);
         }
     }

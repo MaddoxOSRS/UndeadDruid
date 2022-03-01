@@ -22,6 +22,7 @@ public class Configs {
     //Prayer restoration
     public static final Tile ALTAR_TILE = new Tile(1801, 9951, 0);
     public static final int ALTAR = 34837;
+    public static final int[] ALTARS = {34837, 34900};
     public static final String ALTARSTRING = "Altar";
     public static final int ALTARidChange = 34900;
     public static final int FORTHOSENTRANCE = 34865;
@@ -52,6 +53,8 @@ public class Configs {
     }
     public static boolean interactingwithDruid() {
         return Players.local().interacting().getName().equals(Configs.DRUIDS_STRING);
+    }    public static boolean nearDead() {
+        return Players.local().interacting().healthPercent() <= 10;
     }
     public static final int DRUIDS = 2145;
     public static final String DRUIDS_STRING = "Undead Druid";

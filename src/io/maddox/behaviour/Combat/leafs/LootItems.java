@@ -20,8 +20,9 @@ public class LootItems extends Leaf {
             System.out.println("Loot items");
             return 0;
         }
-            if (item.interact("Take")) {
-                Condition.wait(() -> !Configs.getLoot(), 250, 5);
+            if (!item.interact("Take") || !Condition.wait(() -> !Configs.getLoot(), 250, 5)) {
+                System.out.println("Failed to loot, Retrying...");
+                return 0;
         }
         return 0;
     }

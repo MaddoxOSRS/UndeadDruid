@@ -15,7 +15,7 @@ public class WalktoBank extends Leaf {
     @Override
     public int onLoop() {
             Movement.walkTo(Areas.HOSIDIUS_BANK.getRandomTile());
-            Condition.wait(() -> Areas.HOSIDIUS_BANK.contains(Players.local()), 250, 5);
+            Condition.wait(() -> Areas.HOSIDIUS_BANK.contains(Players.local()), 250, 10);
         return 0;
     }
 }

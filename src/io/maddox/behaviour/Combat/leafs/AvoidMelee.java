@@ -14,7 +14,7 @@ public class AvoidMelee extends Leaf {
 
     @Override
     public int onLoop() {
-        Tile step = Players.local().tile().derive(+ 2, + 2);
+        Tile step = Players.local().tile().derive(- 1, + 2);
         Movement.step(step);
         return 0;
     }

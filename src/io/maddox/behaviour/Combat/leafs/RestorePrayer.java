@@ -19,16 +19,15 @@ public class RestorePrayer extends Leaf {
 
     @Override
     public int onLoop() {
-       // GameObject altar = Objects.stream().within(Areas.ALTAR_ROOM).id(Configs.ALTAR).firstOrNull();
-        GameObject altaridChange = Objects.stream().within(Areas.ALTAR_ROOM).id(Configs.ALTARidChange).firstOrNull();
+        GameObject altaridChange = Objects.stream().within(Areas.ALTAR_ROOM).id(Configs.ALTARS).firstOrNull();
         if (!altaridChange.valid() || !altaridChange.inViewport()) {
             System.out.println("Altar is not found or on-screen, walking to it's location...");
             Movement.walkTo(Configs.ALTAR_TILE);
             Condition.wait(altaridChange::inViewport, 500, 5);
         }
-        if (altaridChange.interact("Pray-at")) {
-            System.out.println("Interacting with Altar...");
-            Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 700, 5);
+        if (!altaridChange.interact("Pray-at") || !Condition.wait(() -> Prayer.prayerPoints() == Skill.Prayer.realLevel(), 700, 5)) {
+            System.out.println("Failed to interact with Altar, Retrying...");
+            return 0;
         }
         return 0;
     }
