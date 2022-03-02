@@ -1,6 +1,7 @@
 package io.maddox;
 
 import com.google.common.eventbus.Subscribe;
+import com.sun.org.apache.bcel.internal.Const;
 import io.maddox.behaviour.Bank.BankBranch;
 import io.maddox.behaviour.Bank.leafs.*;
 import io.maddox.behaviour.Combat.CombatBranch;
@@ -13,6 +14,7 @@ import io.maddox.behaviour.fallback.FallbackLeaf;
 import io.maddox.behaviour.timeout.TimeoutLeaf;
 import io.maddox.data.Areas;
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 import io.maddox.framework.Tree;
 import org.powbot.api.event.BreakEvent;
 import org.powbot.api.rt4.Players;
@@ -63,7 +65,7 @@ public class Main extends AbstractScript {
         int lootValue = getOption("Grab Items above GP Value:");
         Configs.setlootValue(lootValue);
         Paint p = new PaintBuilder()
-                .addString("Leaf:" , () -> Configs.currentLeaf )
+                .addString("Leaf:" , () -> Constants.currentLeaf )
                 .trackSkill(Skill.Ranged)
                 .trackInventoryItems(23499, 995, 560, 565, 557, 1393, 1395, 1397, 1399, 562, 561, 4698, 564, 207, 5295, 5300, 3138, 245, 1249, 2366, 1247, 217)
                 .x(30)

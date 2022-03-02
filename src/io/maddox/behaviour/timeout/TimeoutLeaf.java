@@ -1,6 +1,7 @@
 package io.maddox.behaviour.timeout;
 
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 import io.maddox.framework.Leaf;
 
 public class TimeoutLeaf extends Leaf {
@@ -12,6 +13,6 @@ public class TimeoutLeaf extends Leaf {
 
     @Override
     public int onLoop() {
-        return Configs.loopReturn;
+        return Constants.loopReturn;
     }
 }

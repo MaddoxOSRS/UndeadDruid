@@ -3,6 +3,7 @@ package io.maddox.behaviour.Combat.leafs;
 
 import io.maddox.data.Areas;
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
 import org.powbot.api.Notifications;
@@ -17,7 +18,7 @@ public class RestorePrayer extends Leaf {
 
     @Override
     public int onLoop() {
-        GameObject altaridChange = Objects.stream().within(Areas.ALTAR_ROOM).id(Configs.ALTARS).firstOrNull();
+        GameObject altaridChange = Objects.stream().within(Areas.ALTAR_ROOM).id(Constants.ALTARS).firstOrNull();
         if (!altaridChange.valid() || !altaridChange.inViewport()) {
             System.out.println("Altar is not found or on-screen, walking to it's location...");
             Camera.turnTo(altaridChange);

@@ -2,6 +2,7 @@ package io.maddox.framework;
 
 
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -27,8 +28,8 @@ public abstract class Branch extends Leaf {
                 .filter(c -> Objects.nonNull(c) && c.isValid())
                 .findAny()
                 .map(tLeaf -> {
-                    Configs.currentBranch = this.getClass().getSimpleName();
-                    Configs.currentLeaf = tLeaf.getClass().getSimpleName();
+                    Constants.currentBranch = this.getClass().getSimpleName();
+                    Constants.currentLeaf = tLeaf.getClass().getSimpleName();
                     return tLeaf.onLoop();
                 }).orElse(600);
     }

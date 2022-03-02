@@ -2,13 +2,13 @@ package io.maddox.behaviour.Bank.leafs;
 
 import io.maddox.data.Areas;
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Players;
-import org.powbot.mobile.script.ScriptManager;
 
 public class TeleportoutsideHouse extends Leaf {
     @Override

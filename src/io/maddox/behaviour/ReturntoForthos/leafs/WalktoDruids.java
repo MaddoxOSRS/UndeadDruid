@@ -16,7 +16,7 @@ public class WalktoDruids extends Leaf {
     @Override
     public int onLoop() {
         Movement.walkTo(Areas.DRUID_AREA.getRandomTile());
-        Condition.wait(() -> Players.local().inMotion(), 250, 5);
+        Condition.wait(() -> Areas.DRUID_ATTACK_AREA.contains(Players.local()), 250, 5);
         return 0;
     }
 }

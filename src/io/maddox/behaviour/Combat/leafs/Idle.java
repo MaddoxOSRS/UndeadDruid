@@ -2,9 +2,9 @@ package io.maddox.behaviour.Combat.leafs;
 
 import io.maddox.Main;
 import io.maddox.data.Configs;
+import io.maddox.data.Constants;
 import io.maddox.framework.Leaf;
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.Players;
 
 public class Idle extends Leaf {
     @Override
