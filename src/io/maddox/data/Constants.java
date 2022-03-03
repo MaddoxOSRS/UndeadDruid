@@ -16,6 +16,7 @@ public class Constants {
     public static int setValue;
     public static final int[] ALTARS = {34837, 34900};
     public static int RuneArrowID = 892;
+    public static int BoneBoltID = 8882;
     public static final int FORTHOSENTRANCE = 34865;
     public static final int DRUIDS = 2145;
     public static final String DRUIDS_STRING = "Undead Druid";

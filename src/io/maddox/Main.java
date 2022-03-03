@@ -56,7 +56,7 @@ import org.powbot.mobile.service.ScriptUploader;
 public class Main extends AbstractScript {
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("Maddox's Undead Druids", "low", "127.0.0.1:5575", true, false);
+        new ScriptUploader().uploadAndStart("Maddox's Undead Druids", "75att", "127.0.0.1:5585", true, false);
     }
     private final Tree tree = new Tree();
     public static long lastActivityTime = 0;

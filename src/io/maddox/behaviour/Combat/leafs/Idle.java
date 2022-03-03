@@ -9,7 +9,7 @@ import org.powbot.api.Condition;
 public class Idle extends Leaf {
     @Override
     public boolean isValid() {
-        return Configs.beingHit();
+        return Configs.beingHit() && !Configs.avoidMelee();
     }
 
     @Override

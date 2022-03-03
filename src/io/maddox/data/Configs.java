@@ -10,10 +10,9 @@ import static io.maddox.data.Constants.setValue;
 
 public class Configs {
 
-
     //Prayer boolean
     public static boolean restorePray() {
-        return Prayer.prayerPoints() < Random.nextInt(15, 35) || Prayer.prayerPoints() == 0;
+        return Prayer.prayerPoints() < Random.nextInt(9, 20) || Prayer.prayerPoints() == 0;
     }
     //Using prayers
     public static boolean checkifActive(){
@@ -55,7 +54,7 @@ public class Configs {
 
     //Combat
     public static boolean hasAmmo() {
-        return Equipment.itemAt(Equipment.Slot.QUIVER).id() != Constants.RuneArrowID;
+        return Equipment.itemAt(Equipment.Slot.QUIVER).id() != Constants.RuneArrowID || Equipment.itemAt(Equipment.Slot.QUIVER).id() != Constants.BoneBoltID ;
     }
     public static boolean outofTabs() {
         return Bank.stream().id(8013).isEmpty();
